@@ -1,0 +1,109 @@
+<!-- Navigation Bar Start -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://goingblindbro.github.io/crypto-source-pro/">
+      <img src="/assets/images/cspro.png" width="40" height="40">
+    </a>
+  </div>
+
+  <div id="navbar" class="navbar-menu">
+    <div class="navbar-start">
+      <!-- Future buttons go here -->
+    </div>
+  </div>
+
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        <a class="button is-black logout-btn">
+          Logout
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+</nav>
+<!-- Navigation Bar End -->
+
+
+<section class="content">
+  <div class="columns">
+    <!-- Add Asset Side Section -->
+    <div class="column is-one-fifth box ">
+      <h2>Manage Holdings</h2>
+      <div class="dropdown mb-4">
+        <div class="dropdown-trigger">
+          <label class="label">Select Asset</label>
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+            <span id="menuText">Asset</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+          <div class="dropdown-content">
+            <hr class="dropdown-divider">
+            <a href="#btc" class="dropdown-item" id="BTC">
+              Bitcoin (BTC)
+            </a>
+            <hr class="dropdown-divider">
+            <a href="#eth" class="dropdown-item" id="ETH">
+              Ethereum (ETH)
+            </a>
+            <hr class="dropdown-divider">
+            <a href="#ada" class="dropdown-item" id="ADA">
+              Cardano (ADA)
+            </a>
+            <hr class="dropdown-divider">
+            <a href="#cro" class="dropdown-item" id="DOGE">
+              Dogecoin (DOGE)
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="field mb-4">
+        <label class="label">Holdings Amount</label>
+        <div class="control mb-4">
+          <input class="input amount-input" type="text" placeholder="Amount">
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="button is-primary add-btn">Add</button>
+        <button class="button is-danger remove-btn">Remove</button>
+      </div>
+    </div>
+    <!-- Add Asset Side Section End-->
+
+
+    <!-- Wallet Section -->
+    <div class="column pt-0">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Asset</th>
+            <th>Current Value</th>
+            <th>Holdings</th>
+            <th>Holdings Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each walletData.owned_coins as |coin|}}
+          <tr>
+            <td>{{coin.acronym}}</td>
+            <td>{{coin.name}}</td>
+            <td class="fetch-value-{{coin.acronym}}">Loading...</td>
+            <td class="count-value-{{coin.acronym}}">{{coin.coins_wallet.count}}</td>
+            <td class="calc-value-{{coin.acronym}}">Loading...</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <!-- Wallet Section End -->
+  </div>
+</section>
+
+<script src="/assets/js/wallet.js"></script>
+<script src="/assets/js/logout.js"></script>
